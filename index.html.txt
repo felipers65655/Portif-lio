@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Felipe Santos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilo customizado para o corpo da página */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f4f4f5;
+        }
+        /* Efeito de gradiente no fundo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 15% 50%, rgba(192, 132, 252, 0.1), transparent 40%),
+                        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.1), transparent 40%);
+            filter: blur(80px);
+        }
+        /* Animação de fade-in */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Estilos para o carrossel horizontal */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, and Opera */
+        }
+        .carousel-item {
+            flex: 0 0 70%; /* Largura do item em telas menores */
+            max-width: 500px;
+            scroll-snap-align: center;
+            transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+            opacity: 0.5;
+            transform: scale(0.85);
+            filter: blur(4px);
+        }
+        .carousel-item.is-center {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0px);
+        }
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex-basis: 40%; /* Largura do item em telas maiores */
+            }
+        }
+        /* Estilos para o botão de like */
+        .like-button .heart-icon {
+            transition: all 0.2s ease-in-out;
+        }
+        .like-button.liked .heart-icon {
+            fill: #ec4899; /* Cor do coração quando curtido */
+            stroke: #ec4899;
+        }
+        .like-button:hover .heart-icon {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="fixed top-0 left-0 w-full z-10 bg-black/30 backdrop-blur-sm border-b border-zinc-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h2 class="text-xl font-bold tracking-tighter">
+                <a href="#inicio">FELIPE SANTOS</a>
+            </h2>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-zinc-400">
+                <a href="#projetos" class="hover:text-white transition-colors duration-300">Projetos</a>
+                <a href="#contato" class="hover:text-white transition-colors duration-300">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Inicial (Hero) -->
+        <section id="inicio" class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-4 leading-tight scroll-reveal">
+                   Felipe Santos
+                </h1>
+                 <h2 class="text-2xl md:text-3xl font-bold text-purple-400 tracking-tight mb-6 scroll-reveal" style="transition-delay: 100ms;">Designer Gráfico & Artista Visual</h2>
+                <p class="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto mb-8 scroll-reveal" style="transition-delay: 200ms;">
+                    Sou designer gráfico com mais de 8 anos de experiência, atuando na criação de peças visuais para empresas de diferentes segmentos. Trabalhei com identidades visuais, materiais para redes sociais, anúncios, convites personalizados, vídeos promocionais e apresentações de cursos.
+                </p>
+                <div class="flex justify-center items-center space-x-4 mb-12 scroll-reveal" style="transition-delay: 400ms;">
+                    <a href="https://www.linkedin.com" target="_blank" class="text-zinc-500 hover:text-white transition-colors duration-300" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="mailto:seu-email@exemplo.com" class="text-zinc-500 hover:text-white transition-colors duration-300" aria-label="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos (Carrossel Horizontal Infinito) -->
+        <section id="projetos" class="py-20 lg:py-32">
+            <div class="text-center mb-16 max-w-2xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter scroll-reveal">Projetos em Destaque</h2>
+                <p class="text-lg text-zinc-400 mt-4 scroll-reveal" style="transition-delay: 200ms;">Role horizontalmente para explorar meu trabalho. Curta os seus favoritos!</p>
+            </div>
+            
+            <div id="gallery-container" class="carousel-container w-full py-4 space-x-4 md:space-x-8">
+                <!-- As imagens e botões serão inseridos aqui pelo JavaScript -->
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contato" class="py-20 lg:py-32 px-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter scroll-reveal">Entre em Contato</h2>
+                <p class="text-lg text-zinc-400 mt-4 mb-8 scroll-reveal" style="transition-delay: 200ms;">
+                    Gostou do que viu? Vamos conversar sobre seu próximo projeto. Me chame no WhatsApp!
+                </p>
+                <div class="scroll-reveal" style="transition-delay: 400ms;">
+                     <a href="https://wa.me/5551999035180" target="_blank" class="inline-flex items-center justify-center bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors duration-300">
+                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.59C8.76 21.39 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 9.27 20.92 6.83 19.16 4.99C17.32 3.14 14.8 2 12.04 2ZM12.04 20.13C10.56 20.13 9.11 19.74 7.85 19L7.52 18.8L3.8 19.86L4.88 16.24L4.63 15.9C3.68 14.53 3.14 12.98 3.14 11.91C3.14 7.02 7.14 3 12.04 3C14.43 3 16.63 3.92 18.33 5.62C20.03 7.32 20.94 9.53 20.94 11.91C20.94 16.8 16.94 20.13 12.04 20.13ZM17.43 14.59C17.23 14.49 16.03 13.9 15.83 13.82C15.63 13.74 15.5 13.7 15.37 13.9C15.24 14.1 14.79 14.65 14.66 14.81C14.53 14.97 14.4 14.99 14.17 14.91C13.94 14.82 12.87 14.45 11.63 13.34C10.66 12.49 10.03 11.53 9.87 11.27C9.71 11.01 9.82 10.9 9.95 10.78C10.06 10.68 10.2 10.5 10.33 10.36C10.46 10.22 10.53 10.12 10.66 9.9C10.79 9.68 10.73 9.51 10.66 9.39C10.6 9.27 10.05 7.95 9.85 7.47C9.65 6.99 9.45 7.05 9.32 7.05C9.19 7.05 9.06 7.05 8.93 7.05C8.8 7.05 8.57 7.11 8.37 7.31C8.17 7.51 7.67 7.96 7.67 8.93C7.67 9.9 8.4 10.82 8.53 10.98C8.66 11.14 10.02 13.36 12.21 14.26C14.4 15.16 14.4 14.78 14.73 14.74C15.06 14.7 16.03 14.17 16.23 14.07C16.43 13.97 16.56 13.93 16.66 14.03C16.76 14.13 17.13 14.51 17.23 14.63C17.33 14.75 17.43 14.79 17.43 14.59Z"></path></svg>
+                        Conversar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-zinc-800 py-8 mt-16">
+        <div class="container mx-auto px-6 text-center text-zinc-500 text-sm">
+            <p>&copy; <span id="current-year"></span> Felipe Santos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Script para o ano atual no rodapé
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Script para animação de scroll reveal
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+            };
+            const displayScrollElement = (element) => element.classList.add('visible');
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) displayScrollElement(el);
+                });
+            };
+            window.addEventListener('scroll', handleScrollAnimation);
+            setTimeout(handleScrollAnimation, 100);
+
+            // --- SCRIPT PARA CARROSSEL INFINITO COM LIKES ---
+            const galleryContainer = document.getElementById('gallery-container');
+            const images = [
+                "https://imgur.com/39osOFl.jpeg", "https://imgur.com/yCtH14K.jpeg", "https://imgur.com/AXyDn9Z.jpeg",
+                "https://imgur.com/eJqvarN.jpeg", "https://imgur.com/mDa3ECZ.jpeg", "https://imgur.com/yhB67K4.jpeg",
+                "https://imgur.com/QtjUcTZ.jpeg", "https://imgur.com/rz8NicW.jpeg", "https://imgur.com/H43cVLc.jpeg",
+                "https://imgur.com/CMmkuTR.jpeg", "https://imgur.com/1T3cfAL.jpeg", "https://imgur.com/UBTkZ8e.jpeg",
+                "https://imgur.com/OX5s55L.jpeg", "https://imgur.com/p5ayyn2.jpeg", "https://imgur.com/CU7Hw43.jpeg",
+                "https://imgur.com/rDblhSo.jpeg", "https://imgur.com/KEifm6l.jpeg", "https://imgur.com/PMtTgao.jpeg",
+                "https://imgur.com/gw223qf.jpeg", "https://imgur.com/FANMgPr.jpeg", "https://imgur.com/awQS6yT.jpeg",
+                "https://imgur.com/Ok3PWrh.jpeg", "https://imgur.com/6JtXztL.jpeg", "https://imgur.com/NQXtAA2.jpeg",
+                "https://imgur.com/sIGl7Ol.jpeg", 
+            ];
+
+            const allLikes = JSON.parse(localStorage.getItem('portfolioLikes')) || {};
+
+            // Criar os itens da galeria
+            const createGalleryItem = (src, index) => {
+                const itemState = allLikes[src] || { count: Math.floor(Math.random() * 50), liked: false };
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'carousel-item relative group';
+                galleryItem.innerHTML = `
+                    <img src="${src}" alt="Projeto de design gráfico ${index + 1}" class="rounded-lg w-full h-full object-contain" loading="lazy">
+                    <button class="like-button absolute bottom-3 right-3 flex items-center gap-2 bg-black/50 backdrop-blur-sm text-white px-3 py-1.5 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100" data-img-src="${src}">
+                        <svg class="heart-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path></svg>
+                        <span class="like-count font-semibold text-sm">${itemState.count}</span>
+                    </button>
+                `;
+                 if (itemState.liked) {
+                    galleryItem.querySelector('.like-button').classList.add('liked');
+                }
+                return galleryItem;
+            };
+
+            // Duplicar a galeria para o efeito infinito
+            const extendedImages = [...images, ...images, ...images];
+            extendedImages.forEach((src, index) => {
+                galleryContainer.appendChild(createGalleryItem(src, index));
+            });
+
+            const items = galleryContainer.querySelectorAll('.carousel-item');
+            let itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginRight) * 2;
+            const contentWidth = images.length * itemWidth;
+
+            // Posição inicial no meio do carrossel
+            galleryContainer.scrollLeft = contentWidth;
+
+            let isScrolling;
+
+            const checkCenter = () => {
+                const containerCenter = galleryContainer.getBoundingClientRect().left + galleryContainer.offsetWidth / 2;
+                items.forEach(item => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenter = itemRect.left + itemRect.width / 2;
+                    const distance = Math.abs(containerCenter - itemCenter);
+                    if (distance < itemRect.width / 2) {
+                        item.classList.add('is-center');
+                    } else {
+                        item.classList.remove('is-center');
+                    }
+                });
+            };
+
+            const handleInfiniteScroll = () => {
+                if (galleryContainer.scrollLeft <= itemWidth) {
+                    galleryContainer.style.scrollBehavior = 'auto';
+                    galleryContainer.scrollLeft += contentWidth;
+                    galleryContainer.style.scrollBehavior = 'smooth';
+                }
+                if (galleryContainer.scrollLeft >= contentWidth + itemWidth) {
+                     galleryContainer.style.scrollBehavior = 'auto';
+                     galleryContainer.scrollLeft -= contentWidth;
+                     galleryContainer.style.scrollBehavior = 'smooth';
+                }
+                checkCenter();
+            };
+            
+            galleryContainer.addEventListener('scroll', () => {
+                window.clearTimeout(isScrolling);
+                isScrolling = setTimeout(handleInfiniteScroll, 150);
+                checkCenter();
+            });
+
+            galleryContainer.addEventListener('click', (e) => {
+                const button = e.target.closest('.like-button');
+                if (!button) return;
+
+                const imgSrc = button.dataset.imgSrc;
+                const allLikesData = JSON.parse(localStorage.getItem('portfolioLikes')) || {};
+                const itemState = allLikesData[imgSrc] || { count: 0, liked: false };
+
+                if (itemState.liked) {
+                    itemState.count--;
+                    itemState.liked = false;
+                    button.classList.remove('liked');
+                } else {
+                    itemState.count++;
+                    itemState.liked = true;
+                    button.classList.add('liked');
+                }
+                
+                button.querySelector('.like-count').textContent = itemState.count;
+                allLikesData[imgSrc] = itemState;
+                localStorage.setItem('portfolioLikes', JSON.stringify(allLikesData));
+            });
+            
+             // Recalcular em caso de redimensionamento da janela
+            window.addEventListener('resize', () => {
+                itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginRight) * 2;
+                checkCenter();
+            });
+            
+            // Checagem inicial
+            checkCenter();
+        });
+    </script>
+</body>
+</html>
